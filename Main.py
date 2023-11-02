@@ -1,17 +1,31 @@
+import random
+
 rock = 0
 paper = 1
 scissors = 2
 
+weapon_map = {
+    0: 'rock',
+    1: 'paper',
+    2: 'scissors'
+}
+
+print("")
 print("Welcome to the Tournement!")
+print("")
 print("1)Rock\n2)Paper\n3)Scissors")
-weapon = input("Choose your weapon: ")
-print("Your weapon is " + weapon.lower())
+print("")
 
-"""
-random.randrange(0,2)
-print("Ready!\n Rock\n Paper\n Scissors\n Shoot)
+player_move = input("Choose your weapon: ")
+player_move = player_move.lower()
+print("Your weapon is " + player_move.lower())
+print("")
 
-Use nested dictionary to decide outcome
+ai_weapon = random.randint(0,2)
+ai_move = weapon_map[ai_weapon]
+print("Ready!\n Rock\n Paper\n Scissors\n Shoot!")
+print("")
+
 ai = {
     'rock' : {
         'rock': 'tied',
@@ -22,24 +36,27 @@ ai = {
         'rock': 'lost',
         'paper': 'tied',
         'scissors': 'lost'
-    }
-    'scissors' " {
+    },
+    'scissors' : {
         'rock': 'won',
         'paper': 'lost',
-        'scissors": 'tied'
+        'scissors': 'tied'
     }
-}
+ }
 
-ai_move = 'punch'
-player_move = 'kick'
-print ai[ai_move][player_move] #output: wins
+outcome = ai[ai_move][player_move]
 
+if outcome == 'won':
+    print("You won: " + player_move + " beats " + ai_move)
 
-ai_move = 'stab'
-player_move = 'punch'
-print ai[ai_move][player_move] #output: loses
+elif outcome == 'tied':
+    print("You tied: " + player_move + " can't beat " + ai_move)
 
+else:
+    print("You lost: " + ai_move + " beats " + player_move)
 
-#You "Blank"
-#Blank beats Blank
-"""
+print("")
+
+'''
+Player can only use the 3 options
+'''
